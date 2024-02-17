@@ -1,7 +1,16 @@
-import mongoose,{Schema} from 'mongoose'
+import mongoose, { Document, Schema } from 'mongoose';
 
-const newsLatterSchame = new Schema({
+interface NewsLetterDocument extends Document {
+    email: string;
+}
 
-});
+const newsLetterSchema = new Schema<NewsLetterDocument>(
+    {
+        email: {
+            type: String,
+            required: true,
+        },
+    },{timestamps:true}
+);
 
-export const newsLatterEmail = mongoose.model("newsLatterEmail",newsLatterSchame);
+export const NewsLetterEmailModel = mongoose.model<NewsLetterDocument>('newsLatterEmail', newsLetterSchema);
