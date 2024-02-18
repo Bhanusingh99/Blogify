@@ -4,7 +4,7 @@ import React from 'react';
 const Navbar = () => {
   return (
     <nav className="bg-dark-200 fixed w-full z-20 top-0 left-0">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">
         <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <Image src={'/icons/nerd.png'} height={25} width={32} className="h-8" alt="Flowbite Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Blogify</span>

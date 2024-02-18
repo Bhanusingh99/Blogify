@@ -23,19 +23,9 @@ const userSchema = new Schema<UserDocument>(
         password: {
             type: String,
             required: true,
-        },
-        bio: {
-            type: String,
-        },
-        profile_picture: {
-            type: String,
-        },
-        is_active: {
-            type: Boolean,
-            default: true,
-        },
+        }
     },
     { timestamps: true }
 );
 
-export const UserModel = mongoose.model<UserDocument>('users', userSchema);
+export const User = mongoose.model<UserDocument>('users', userSchema);

@@ -3,40 +3,28 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="mt-[4.25rem] w-[80%] h-screen flex mx-auto max-md:w-[90%]">
-      {/* Fixed Sidebar */}
-      <div className="w-[25%] bg-yellow-500 fixed h-full overflow-y-auto max-md:hidden">
-        {/* Sidebar content goes here */}
+    <div className="bg-dark-200">
+    <aside
+      id="sidebar-multi-level-sidebar"
+      className="fixed top-0 left-0 z-40 w-[20rem] h-screen transition-transform -translate-x-full sm:translate-x-0 mt-[4.75rem] bg-dark-200"
+      aria-label="Sidebar"
+    >
+      
+    </aside>
+
+
+    <div className="p-4 sm:ml-[20rem] mt-[4.5rem] z-40">
+      <div className=" flex flex-wrap gap-10 bg-dark-200">
+            <div className="w-[31rem] h-[20rem] bg-red-600"></div>
+            <div className="w-[31rem] h-[20rem] bg-red-600"></div>
+            <div className="w-[31rem] h-[20rem] bg-red-600"></div>
+            <div className="w-[31rem] h-[20rem] bg-red-600"></div>
+            <div className="w-[31rem] h-[20rem] bg-red-600"></div>
+            <div className="w-[31rem] h-[20rem] bg-red-600"></div>
+            <div className="w-[31rem] h-[20rem] bg-red-600"></div>
+            <div className="w-[31rem] h-[20rem] bg-red-600"></div>
       </div>
-
-      {/* Scrollable Content */}
-      <div className="w-[75%] bg-red-500 overflow-y-scroll flex flex-col gap-2 no-scrollbar ml-[19rem] max-md:ml-0 
-      max-md:w-[100%] ">
-        <div className="bg-blue-500 w-full h-16"></div>
-        <div className="bg-blue-500 w-full h-16"></div>
-
-        <div className="bg-blue-500 w-full h-16"></div>
-
-        <div className="bg-blue-500 w-full h-16"></div>
-
-        <div className="bg-blue-500 w-full h-16"></div>
-        <div className="bg-blue-500 w-full h-16"></div>
-        <div className="bg-blue-500 w-full h-16"></div>
-        <div className="bg-blue-500 w-full h-16"></div>
-        <div className="bg-blue-500 w-full h-16"></div>
-        <div className="bg-blue-500 w-full h-16"></div>
-        <div className="bg-blue-500 w-full h-16"></div>
-        <div className="bg-blue-500 w-full h-16"></div>
-        <div className="bg-blue-500 w-full h-16"></div>
-        <div className="bg-blue-500 w-full h-16"></div>
-        <div className="bg-blue-500 w-full h-16"></div>
-        <div className="bg-blue-500 w-full h-16"></div>
-
-        <div className="bg-blue-500 w-full h-16"></div>
-
-
-        
-      </div>
-    </main>
+    </div>
+  </div>
   );
 }
