@@ -6,15 +6,17 @@ const Navbar = () => {
   return (
     <nav className="bg-dark-200 fixed w-full z-20 top-0 left-0">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">
-        <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <Image src={'/icons/nerd.png'} height={25} width={32} className="h-8" alt="Flowbite Logo" />
+        <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse ml-[-4.5rem] max-xl:ml-0">
+          <Image src={'/icons/nerd.png'} height={25} width={32} className="h-8" alt="Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">Blogify</span>
         </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          <Link href={'/sign-up'}>
           <button type="button" className="text-white btn hover:bg-purple-500 focus:ring-4 font-medium 
           text-sm px-4 py-2 text-center max-md:hidden rounded-[20px]">
             Get started
           </button>
+          </Link>
           <button
             data-collapse-toggle="navbar-sticky"
             type="button"
