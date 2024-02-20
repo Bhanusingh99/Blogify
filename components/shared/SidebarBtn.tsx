@@ -13,7 +13,7 @@ const SidebarBtn = ({title,icons,path}:Props) => {
 
   return (
     <Link href={`/${path}`}>
-                <div className={`flex gap-3 text-[.9rem] py-2 px-2 rounded-xl
+                <div className={`flex gap-3 text-[.9rem] py-2.5 px-4 rounded-xl
                   items-center ${url === `/${title}` ? "text-white btn" : `hover:bg-dark-300 text-white
                   `}`}>
                     <p>{title}</p>

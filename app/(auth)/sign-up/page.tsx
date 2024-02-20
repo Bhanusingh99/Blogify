@@ -3,12 +3,15 @@ import Link from 'next/link';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation'
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const SignIn = () => {
   const router = useRouter()
   const [email, setEmail] = useState("")
   const [username, setUsername] = useState("")
+  const [firstname, setFirstname] = useState("")
+  const [lastname, setLastname] = useState("")
   const [password, setPassword] = useState("")
 
 
@@ -16,19 +19,20 @@ const SignIn = () => {
     e.preventDefault()
 
     try {
-      const response =await axios.post('http://localhost:4000/api/v1/sign-up', {
-        userName: username,
-        email: email,
-        password:password
-      })
-      localStorage.setItem("token",response.data.token)
-      console.log(response.data.token)
-      if(response.statusText === 'OK'){
-       return router.push('http://localhost:3000')
-      }
-    } catch (error) {
+      const userData = {
+        email,
+        username,
+        firstname,
+        lastname,
+        password
+      };
+
+      const response = await axios.post("/api/user/sign-up", userData);
+      console.log(response.data)
+      router.push('/')
+
+    } catch (error:any) {
       console.log(error)
-      throw error
     }
   }
 
@@ -45,6 +49,32 @@ const SignIn = () => {
             Create an account
           </h1>
           <form className="space-y-4 md:space-y-6">
+          <div>
+              <label htmlFor="firstname" className="block mb-2 text-sm font-medium text-white">Firstname</label>
+              <input
+                type="text"
+                name="firstname"
+                id="firstname"
+                value={firstname}
+                onChange={(e) => (setFirstname(e.target.value))}
+                className="border border-gray-300 text-white bg-transparent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Bhanu"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="lastname" className="block mb-2 text-sm font-medium text-white">Lastname</label>
+              <input
+                type="text"
+                name="lastname"
+                id="lastname"
+                value={lastname}
+                onChange={(e) => (setLastname(e.target.value))}
+                className="border border-gray-300 text-white bg-transparent sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Singh"
+                required
+              />
+            </div>
             <div>
               <label htmlFor="email" className="block mb-2 text-sm font-medium text-white">Your email</label>
               <input

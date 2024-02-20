@@ -7,24 +7,26 @@ import React, { useState } from 'react'
 const LogIn = () => {
   const router = useRouter();
 
-  const [userName,setUsername]= useState("");
+  const [email,setEmail]= useState("");
   const [password,setPassword]= useState("");
 
 
-  const logIn = async (e:any) => {
+  async function logIn(e:any){
     e.preventDefault()
 
     try {
-      const response =await axios.post('http://localhost:4000/api/v1/log-in', {
-        userName,
-        password
-      })
-      localStorage.setItem("token",response.data.token)
-      console.log(response.data.token)
-      if(response.statusText === 'OK'){
-       return router.push('http://localhost:3000')
-      }
-    } catch (error) {
+     const userdate = {
+      email,
+      password
+     }
+    console.log(userdate)
+    const response =await axios.post('/api/user/log-in',userdate);
+    console.log(response)
+    if(response.statusText === "OK"){
+      return router.push("/")
+    }
+
+    } catch (error:any) {
       console.log(error)
       throw error
     }
@@ -44,15 +46,15 @@ const LogIn = () => {
           </h1>
           <form className="space-y-4 md:space-y-6" action="#">
             <div>
-              <label htmlFor="username" className="block mb-2 text-sm font-medium text-white">Your username</label>
+              <label htmlFor="email" className="block mb-2 text-sm font-medium text-white">email</label>
               <input
-                type="text"
-                name="username"
-                id="username"
-                value={userName}
-                onChange={(e) => setUsername(e.target.value)}
+                type="email"
+                name="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="bg-transparent border border-gray-300 text-white sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"
-                placeholder="Bhanu99"
+                placeholder="Bhanu@gmail.com"
                 required
               />
             </div>
