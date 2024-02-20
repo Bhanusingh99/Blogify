@@ -2,14 +2,19 @@ import { User } from "@/models/user.model";
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 
+interface Props{
+    userName:String,
+    password:String,
+    email:String
+}
+
 //user sign-up
-export const signUp = async (req:any,res:any) => {
+export const signUp = async ({userName,password,email}:Props) => {
 
     try {
         //fetch data from body
-        const {userName,email,password,bio,profile_picture,isActive} = req.body;
+        
 
-        const {pic} = req.files.file;
 
         //check if input field is empty or not
         if(!userName || !email || !password){
