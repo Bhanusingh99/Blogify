@@ -4,21 +4,10 @@ import { BlogBtn } from '../BlogContainer'
 import { usePathname } from 'next/navigation'
 import SidebarBtn from './SidebarBtn'
 import { LogIn, LogOut, NotebookPen, User } from 'lucide-react'
-import axios from 'axios'
 
 const Sidebar = () => {
     const url  = usePathname();
-    const [user,setUser] = useState("")
- 
-    // console.log(await getUserDetails());
-    useEffect(()=>{
-      const getUserDetails = async () => {
-        const res = await axios.get('/api/user/me')
-        setUser(res.data.data._id)
-      }
-      getUserDetails();
-    },[])
-    console.log(user)
+
   return (
     <aside
       id="sidebar-multi-level-sidebar"
@@ -34,12 +23,6 @@ const Sidebar = () => {
       <div className=' mt-16 pl-[3rem] flex flex-col gap-3'>
       <>
       <SidebarBtn title={"write-blog"} icons={<NotebookPen size={20}/>} path={"create-blog"}/>
-
-            {
-              user === "" ? <SidebarBtn title={"log-in"} icons={<LogIn size={20}/>} path={"log-in"}/>
-               : <SidebarBtn title={"log-out"} icons={<LogOut size={20}/>} />
-              
-            }
         </>    
       </div>
     </aside>

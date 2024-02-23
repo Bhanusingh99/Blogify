@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import Dropdown from '../popup';
 
 const Navbar = () => {
   return (
@@ -12,10 +13,9 @@ const Navbar = () => {
         </Link>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <Link href={'/sign-up'}>
-          <button type="button" className="text-white btn hover:bg-purple-500 focus:ring-4 font-medium 
-          text-sm px-4 py-2 text-center max-md:hidden rounded-[20px]">
-            Get started
-          </button>
+            
+              <Dropdown/>
+            
           </Link>
           <button
             data-collapse-toggle="navbar-sticky"
@@ -33,24 +33,24 @@ const Navbar = () => {
         <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
           <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
             <li>
-              <a href="#" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-purple-500 md:p-0" aria-current="page">
+              <Link href="#" className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-purple-500 md:p-0" aria-current="page">
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-500 md:p-0  ">
+              <Link href="#" className="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-500 md:p-0  ">
                 About
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-500 md:p-0 ">
+              <Link href="#" className="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-500 md:p-0 ">
                 Services
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-500 md:p-0 ">
+              <Link href="#" className="block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-purple-500 md:p-0 ">
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

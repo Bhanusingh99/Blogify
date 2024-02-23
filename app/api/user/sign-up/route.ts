@@ -3,6 +3,7 @@ import {connectionToDb} from "@/db/connectionDb"
 import { NextRequest, NextResponse} from "next/server";
 import bcrypt from "bcrypt";
 import validator from 'validator';
+import jwt from 'jsonwebtoken'
 
 connectionToDb()
 export async function POST(request:NextRequest){
@@ -32,11 +33,23 @@ export async function POST(request:NextRequest){
             password:hasedPassowrd
         })
 
-        return NextResponse.json({
+
+        const payload = {
+            id:createUser._id,
+            email:createUser.email
+        }
+        const token = jwt.sign(payload,process.env.JWT_SECRET_KEY!,{expiresIn:"5h"})
+
+        const response = NextResponse.json({
             message:"user created successfully",
             success:true,
-            createUser
+            createUser,
+            token
         })
+        response.cookies.set("token",token,{
+            httpOnly:true
+        })
+        return response
     } catch (error:any) {
         return NextResponse.json({error: error.message},{status:500})
     }

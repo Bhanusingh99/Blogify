@@ -8,6 +8,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const SignIn = () => {
   const router = useRouter()
+  const[error,setError] = useState("")
   const [email, setEmail] = useState("")
   const [username, setUsername] = useState("")
   const [firstname, setFirstname] = useState("")
@@ -29,8 +30,13 @@ const SignIn = () => {
 
       const response = await axios.post("/api/user/sign-up", userData);
       console.log(response.data)
-      router.push('/')
-
+      console.log(response.data.message)
+      setError(response.data.message)
+      if(response.data.success){
+        localStorage.setItem("token",response.data.token)
+        return router.push('/log-in')
+      }
+      
     } catch (error:any) {
       console.log(error)
     }
@@ -114,6 +120,9 @@ const SignIn = () => {
                 required
               />
             </div>
+            {
+              error && <p className='text-red-500'>{error}</p>
+            }
             <button
               onClick={(e) => createAccount(e)}
               className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center btn">
